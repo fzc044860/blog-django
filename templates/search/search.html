@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+    搜索结果列表
+{% endblock %}
+{% block main %}
+    {% if query %}
+        {% for obj in page.object_list %}
+            <div class="article">
+                <h2>{{ obj.object.title }}</h2>
+                <div class="clr"></div>
+                <p><span class="date">{{ obj.object.created }}</span> &nbsp;|&nbsp 类别： <a href="#">{{ obj.object.category }}</a>
+                    &nbsp;|&nbsp;
+                    标签：
+                    {% for t in obj.object.tag.all %}
+                        <a href="#">{{ t.Tname }}</a>
+                    {% endfor %}
+                <p>{{ obj.object.desc }}</p>
+                <p class="spec"><a href="/detail/{{ obj.object.id }}/" class="rm">阅读全文</a> &nbsp;|&nbsp; <a href="#" class="com">评论</a></p>
+            </div>
+        {% empty %}
+            无记录！
+        {% endfor %}
+{#        <nav aria-label="Page navigation">#}
+{#            <ul class="pagination">#}
+{#                {{ page_string }}#}
+{#            </ul>#}
+{#        </nav>#}
+    {% endif %}
+{% endblock %}

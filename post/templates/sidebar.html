@@ -1,0 +1,34 @@
+<div class="sidebar">
+    <div class="gadget" style="background-color: #eee;margin-top: 10px">
+        <span class="title" style="font-size:large">分类</span>
+        <ul class="sb_menu">
+            {% for cp in r_catepost %}
+                <li>
+                    <a class="link-target" href="/category/{{ cp.category }}">{{ cp.category__cname }}</a>
+                    <span class="link-target">({{ cp.c }})</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="gadget" style="background-color: #eee;margin-top: 25px">
+        <span class="title" style="font-size:large">近期文章</span>
+        <ul class="ex_menu">
+            {% for rp in r_recpost %}
+                <li>
+                    <a href="/detail/{{ rp.id }}/">{{ rp.title|truncatechars:16 }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="gadget" style="background-color: #eee;margin-top: 25px">
+        <span class="title" style="font-size:large">归档</span>
+        <ul class="sb_menu">
+            {% for fp in r_filepost %}
+                <li>
+                    <a class="link-target" href="/date/{{ fp.0|date:'Y' }}/{{ fp.0|date:'m' }}">{{ fp.0|date:'Y年m月' }}</a>
+                    <span class="link-target">({{ fp.1 }})</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

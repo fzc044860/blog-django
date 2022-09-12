@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+    首页
+{% endblock %}
+{% block main %}
+    {% for obj in page_queryset %}
+        <div class="article">
+            <h2>{{ obj.title }}</h2>
+            <div class="clr"></div>
+            <p><span class="date">{{ obj.created }}</span> &nbsp;|&nbsp 类别： <a href="#">{{ obj.category }}</a>
+                &nbsp;|&nbsp;
+                标签：
+                {% for t in obj.tag.all %}
+                    <a href="#">{{ t.Tname }}</a>
+                {% endfor %}
+            <p>{{ obj.desc }}</p>
+            <p class="spec"><a href="/detail/{{ obj.id }}/" class="rm">阅读全文</a> &nbsp;|&nbsp; <a href="#" class="com">评论</a></p>
+        </div>
+    {% endfor %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            {{ page_string }}
+        </ul>
+    </nav>
+{% endblock %}

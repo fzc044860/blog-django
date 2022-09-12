@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <script type="text/javascript" src="{% static 'js/cufon-yui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/arial.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/cuf_run.js' %}"></script>
+    {% block headjs %}
+    {% endblock %}
+    <!-- CuFon ends -->
+</head>
+<body>
+<div class="main">
+    {% include 'header.html' %}
+    <div class="content">
+        <div class="content_resize">
+            <div class="mainbar">
+                {% block main %}
+                {% endblock %}
+            </div>
+            {% include 'sidebar.html' %}
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+<style>
+    .copyrights {
+        text-indent: -9999px;
+        height: 0;
+        line-height: 0;
+        font-size: 0;
+        overflow: hidden;
+    }
+</style>
+</body>
+</html>
